@@ -20,6 +20,8 @@ Test::~Test()
 void Test::Testvector() {
 	kina = vector2i(10, 10);
 	vector3f kina3(10, 10, 10);
+	vector2i kina2;
+	
 	cout << kina.x;
 	cout << kina.y;
 }

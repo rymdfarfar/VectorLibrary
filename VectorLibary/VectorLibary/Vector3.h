@@ -13,19 +13,6 @@ struct  vector3
 	// setting constructor
 	vector3<T>(const T x0, const T y0, const T z0) : x(x0), y(y0), z(z0) {}
 
-
-	T &operator [](unsigned int i)
-	{
-		return *(&x + i);
-	}
-
-	// array indexing
-	const T &operator [](unsigned int i) const
-	{
-		return *(&z + i);
-	}
-
-
 	// function call operator
 	void operator ()(const T x0, const T y0, const T z0)
 	{
@@ -135,7 +122,7 @@ struct  vector3
 
 };
 
-// macro to make creating the constructorst for derived vectors easier
+// macro to make creating the constructorst for the different types of vectors 
 #define VECTOR3_CTORS(name, type)   \
 	/*  constructor */				\
 	name() {}						\
@@ -148,12 +135,33 @@ struct  vector3
 struct vector3i : public vector3<int>
 {
 	 VECTOR3_CTORS(vector3i, int)
+
+
+		 // gets the length of this vector squared
+		 int length_squared() const
+	 {
+		 return (int)(*this * *this);
+	 }
+
+	 // gets the length of this vector
+	 int length() const
+	 {
+		 return (int)sqrt(*this * *this);
+	 }
+
+	 // normalizes this vector
+	 void normalize()
+	 {
+		 *this /= length();
+	 }
+
+	 // returns the normalized vector
+	 vector3i normalized() const
+	 {
+		 return  *this / length();
+	 }
 };
 
-struct vector3ui : public vector3<unsigned int>
-{
-	VECTOR3_CTORS(vector3ui, unsigned int)
-};
 
 struct vector3f : public vector3<float>
 {

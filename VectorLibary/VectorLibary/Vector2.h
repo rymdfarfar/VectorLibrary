@@ -13,17 +13,6 @@ struct vector2
 	// setting constructor
 	vector2<T>(const T x0, const T y0) : x(x0), y(y0) {}
 
-	// array indexing
-	T &operator [](unsigned int i)
-	{
-		return *(&x + i);
-	}
-
-	// array indexing
-	const T &operator [](unsigned int i) const
-	{
-		return *(&x + i);
-	}
 
 	// function call operator
 	void operator ()(const T x0, const T y0)
@@ -116,7 +105,7 @@ struct vector2
 	}
 };
 
-	// macro to make creating the constructorst for derived vectors easier
+	/// macro to make creating the constructorst for the different types of vectors 
 #define VECTOR2_CTORS(name, type)   \
 	/*  constructor */				\
 	name() {}						\
@@ -129,13 +118,33 @@ struct vector2
 	struct vector2i : public vector2<int>
 	{
 		VECTOR2_CTORS(vector2i, int)
-	};
 
 
-	struct vector2ui : public vector2<unsigned int>
-	{
-		VECTOR2_CTORS(vector2ui, unsigned int)
+			// gets the length of this vector squared
+			int length_squared() const
+		{
+			return (int)(*this * *this);
+		}
+
+		// gets the length of this vector
+		int length() const
+		{
+			return (int)sqrt(*this * *this);
+		}
+
+		// normalizes this vector
+		void normalize()
+		{
+			*this /= length();
+		}
+
+		// returns the normalized vector
+		vector2i normalized() const
+		{
+			return  *this / length();
+		}
 	};
+
 
 
 	struct vector2f : public vector2<float>
