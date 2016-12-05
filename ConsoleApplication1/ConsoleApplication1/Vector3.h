@@ -59,9 +59,17 @@ struct  vector3
 	}
 
 	// uniform scaling return new vector
+	// vec * num
 	const vector3<T> operator *(const T num) const
 	{
 		vector3<T> temp(*this);
+		return temp *= num;
+	}
+
+	// num * vec
+	friend const vector3<T> operator *(const T num, const vector3<T> &v)
+	{
+		vector3<T> temp(v);
 		return temp *= num;
 	}
 
@@ -70,6 +78,11 @@ struct  vector3
 	{
 		vector3<T> temp(*this);
 		return temp /= num;
+	}
+
+	friend const vector3<T> operator /(const T num, const vector3<T> &v)
+	{
+		return vector3<T>(num / v.x, num / v.y, num / v.z);
 	}
 
 	// addition return this vector
@@ -90,7 +103,7 @@ struct  vector3
 	//uniform scaling
 	const vector3<T> &operator *=(const T num)
 	{
-		x *= num;	y *= num z*=num;
+		x *= num;	y *= num; z *= num;
 		return *this;
 	}
 
