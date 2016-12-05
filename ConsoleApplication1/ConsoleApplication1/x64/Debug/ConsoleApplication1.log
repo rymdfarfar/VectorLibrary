@@ -1,0 +1,5 @@
+﻿  ConsoleApplication1.cpp
+c:\users\poterdahl\documents\visual studio 2015\projects\consoleapplication1\consoleapplication1\consoleapplication1.cpp(18): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\poterdahl\documents\visual studio 2015\projects\consoleapplication1\consoleapplication1\consoleapplication1.cpp(19): warning C4305: 'argument': truncation from 'double' to 'float'
+  ConsoleApplication1.vcxproj -> c:\users\poterdahl\documents\visual studio 2015\Projects\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
+  ConsoleApplication1.vcxproj -> c:\users\poterdahl\documents\visual studio 2015\Projects\ConsoleApplication1\x64\Debug\ConsoleApplication1.pdb (Full PDB)
